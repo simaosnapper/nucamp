@@ -78,7 +78,7 @@ class Main extends Component {
           <Switch>
             <Route path="/home" component={HomePage} />
             <Route exact path='/contactus' render={() => <Contact postFeedback={this.props.postFeedback} resetFeedbackForm={this.props.resetFeedbackForm} /> } />
-            <Route exact path="/aboutus" render={() => <AboutComponent partners={this.props.partners.partners} />} />
+            <Route exact path="/aboutus" render={() => <AboutComponent partners={this.props.partners} />} />
             <Route exact path="/directory" render={() => <Directory campsites={this.props.campsites}/>} />
             <Route exact path="/directory/:campsiteId" component={CampsiteWithId} />
             <Redirect to="/home" />
