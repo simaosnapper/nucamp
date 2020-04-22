@@ -224,6 +224,30 @@
       "text": "TYesting somme cool build stuff to see if itactually works but I thinks it broke so I just gave 3 stars instead",
       "date": "2020-04-11T06:47:16.821Z",
       "id": 23
+    },
+    {
+      "campsiteId": 0,
+      "rating": "5",
+      "author": "testing",
+      "text": "cool comment",
+      "date": "2020-04-11T13:21:04.955Z",
+      "id": 24
+    },
+    {
+      "campsiteId": 1,
+      "rating": "5",
+      "author": "Ian",
+      "text": "Ian's Comment",
+      "date": "2020-04-11T14:16:10.682Z",
+      "id": 25
+    },
+    {
+      "campsiteId": 1,
+      "rating": "5",
+      "author": "Ian",
+      "text": "Ian's Comment",
+      "date": "2020-04-11T14:16:24.874Z",
+      "id": 26
     }
   ],
   "partners": [

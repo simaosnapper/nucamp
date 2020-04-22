@@ -44,9 +44,10 @@ export const postComment = (campsiteId, rating, author, text) => dispatch => {
 export const fetchCampsites = () => dispatch => {
     dispatch(campsitesLoading());
 
-    return fetch(baseUrl + 'campsites')
+    const apiCall = fetch(baseUrl + 'campsites')
     .then(response => {
             if (response.ok) {
+                console.log('OUR RESPONSE RETURNED AN OK 200 CODE');
                  return response;
             } else {
                 const error = new Error(`Error ${response.status}: ${response.statusText}`);
@@ -62,6 +63,8 @@ export const fetchCampsites = () => dispatch => {
     .then(response => response.json())
     .then(campsites => dispatch(addCampsites(campsites)))
     .catch(error => dispatch(campsitesFailed(error.message)));
+    console.log('Our Api Call is running right now');
+    return apiCall;
 };
 
 export const campsitesLoading = () => ({

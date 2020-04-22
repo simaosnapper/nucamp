@@ -40,7 +40,6 @@ class Main extends Component {
   }
 
   render() {
-    console.log('THIS GODDAMED PROPS', this.props);
     const HomePage = () => {
       return (
         <Home
