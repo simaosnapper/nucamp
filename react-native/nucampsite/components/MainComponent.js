@@ -12,6 +12,7 @@ import { connect } from 'react-redux';
 import { fetchCampsites, fetchComments, fetchPromotions,
     fetchPartners } from '../redux/ActionCreators';
 import Reservation from './ReservationComponent';
+import Favorites from './FavoritesComponent';
 
 const mapDispatchToProps = {
     fetchCampsites,
@@ -20,15 +21,28 @@ const mapDispatchToProps = {
     fetchPartners
 };
 
-const navigationOptions = {
-    headerStyle: {
-        backgroundColor: '#5637DD'
+const FavoritesNavigator = createStackNavigator(
+    {
+        Favorites: { screen: Favorites }
     },
-    headerTintColor: '#fff',
-    headerTitleStyle: {
-        color: '#fff'
+    {
+        navigationOptions: ({navigation}) => ({
+            headerStyle: {
+                backgroundColor: '#5637DD'
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+                color: '#fff'
+            },
+            headerLeft: <Icon
+                name='heart'
+                type='font-awesome'
+                iconStyle={styles.stackIcon}
+                onPress={() => navigation.toggleDrawer()}
+            />
+        })
     }
-}
+);
 
 const styles = StyleSheet.create({
     container: {
@@ -99,7 +113,16 @@ const DirectoryNavigator = createStackNavigator(
     },
     {
         initialRouteName: 'Directory',
-        navigationOptions
+        navigationOptions: {
+            headerStyle: {
+                backgroundColor: '#5637DD'
+            },
+            backgroundColor: '#5637DD',
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+                color: '#fff'
+            }
+        }
     }
 );
 
@@ -253,6 +276,20 @@ const MainNavigator = createDrawerNavigator(
                 drawerIcon: ({tintColor}) => (
                     <Icon
                         name='tree'
+                        type='font-awesome'
+                        size={24}
+                        color={tintColor}
+                    />
+                )
+            }
+        },
+        Favorites: {
+            screen: FavoritesNavigator,
+            navigationOptions: {
+                drawerLabel: 'My Favorites',
+                drawerIcon: ({tintColor}) => (
+                    <Icon
+                        name='heart'
                         type='font-awesome'
                         size={24}
                         color={tintColor}
