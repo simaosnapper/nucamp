@@ -1,0 +1,46 @@
+<script>
+    class Student {
+        constructor(email) {
+            this.email = email;
+        }
+    }
+
+    class BootCamp {
+        constructor(students = []) {
+            this.students = students;
+        }
+
+        registerStudent(studentToRegister) {
+            const studentExists =
+              this.students.filter(currentStudent => currentStudent.email === studentToRegister.email);
+            if (studentExists.length) {
+                console.log('sorry bro, this student already exists');
+            } else {
+                console.log(`added the student with email ${studentToRegister.email}`);
+                this.students.push(studentToRegister);
+            }
+        }
+    }
+    const students = [
+        {
+            email: 'someemail@google.com'
+        },
+        {
+            email: 'anotheremail@google.com'
+        },
+        {
+            email: 'thirdemail@google.com'
+        }
+    ]
+    const bootCamp = new BootCamp(students);
+    const oldStudent = {
+        email: 'thirdemail@google.com'
+    };
+    const secondNewStudent = {
+        email: 'somenewstudentemail@google.com'
+    };
+
+    bootCamp.registerStudent(oldStudent);
+    bootCamp.registerStudent(secondNewStudent);
+    //console.log(bootCamp);
+</script>
