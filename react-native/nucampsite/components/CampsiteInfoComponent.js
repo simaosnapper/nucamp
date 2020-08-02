@@ -73,6 +73,7 @@ function RenderComments({comments}) {
 
 function RenderCampsite({campsite, favorite, markFavorite, onShowModal}) {
     const recognizeDrag = ({dx}) => (dx < -200) ? true : false;
+    const recognizeComment = ({dx}) => (dx > 200) ? true : false;
     const view = React.createRef();
 
     const panResponder = PanResponder.create({
@@ -101,6 +102,8 @@ function RenderCampsite({campsite, favorite, markFavorite, onShowModal}) {
                     ],
                     { cancelable: false }
                 );
+            } else if (recognizeComment(gestureState)) {
+                onShowModal();
             }
             return true;
         }
@@ -162,8 +165,6 @@ class CampsiteInfo extends Component {
     static navigationOptions = {
         title: 'Campsite Information'
     };
-
-    toggleModal = () => this.setState({ showModal: !this.state.showModal })
 
     markFavorite = campsiteId => this.props.postFavorite(campsiteId);
 
@@ -230,7 +231,7 @@ class CampsiteInfo extends Component {
                             title="Submit" />
                         </View>
                         <View style={{margin: 10}}>
-                            <Button onPress={this.toggleModal} color="#808080" title="Cancel" />
+                            <Button ocolor="#808080" title="Cancel" />
                         </View>
                     </View>
                 </Modal>
