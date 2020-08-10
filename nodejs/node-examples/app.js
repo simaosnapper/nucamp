@@ -1,4 +1,5 @@
 const rect = require('./rectangle');
+const { response } = require('express');
 
 function solveRect(l, w) {
     console.log(`Solving for rectange with dimensions ${l}, ${w}`);
@@ -12,6 +13,21 @@ function solveRect(l, w) {
         console.log('This statement is logged after the call to rect()');
     });
 }
+
+callback() {
+
+}
+
+function someFunc(callback) {
+    let otherCounter = 2;
+    let counter = 1;
+    setTimeout(() => {
+        callback();
+    }, 1000)
+}
+
+const otherFunc = someFunc(callback);
+
 
 solveRect(2, 4);
 solveRect(3, 5);

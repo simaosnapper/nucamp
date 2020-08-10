@@ -1,7 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
-const campsiteRouter = require('./routes/campsiteRouter');
+const campsiteRouter = require('./routes/campsiteRouter.js');
 const promotionsRouter = require('./routes/promotionRouter');
 const partnersRouter = require('./routes/partnerRouter');
 

@@ -5,8 +5,10 @@ const campsiteRouter = express.Router();
 
 campsiteRouter.use(bodyParser.json());
 
+campsiteRouter.route('/someParameter/:someOtherParameter')
+
 campsiteRouter.route('/')
-.all((_, res, next) => {
+.all((req, res, next) => {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/plain');
     next();

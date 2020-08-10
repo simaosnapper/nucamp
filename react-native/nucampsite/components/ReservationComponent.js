@@ -1,16 +1,8 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
 import { Text, View, StyleSheet, Alert,
     Picker, Switch, Button } from 'react-native';
 import DatePicker from 'react-native-datepicker';
 import * as Animatable from 'react-native-animatable';
-=======
-import { Text, View, ScrollView, StyleSheet,
-    Picker, Switch, Button, Modal, Alert } from 'react-native';
-import DatePicker from 'react-native-datepicker';
-import * as Permissions from 'expo-permissions';
-import { Notifications } from 'expo';
->>>>>>> 56ca58a397ac50a00963808e11933d8a3ca5ee3d
 
 class Reservation extends Component {
 
@@ -34,11 +26,7 @@ class Reservation extends Component {
 
     handleReservation() {
         console.log(JSON.stringify(this.state));
-<<<<<<< HEAD
         const message = `Number of Campers: ${this.state.campers}
-=======
-        let message = `Number of Campers: ${this.state.campers}
->>>>>>> 56ca58a397ac50a00963808e11933d8a3ca5ee3d
                         \nHike-In? ${this.state.hikeIn}
                         '\nDate: ${this.state.date}`;
         Alert.alert(
@@ -55,14 +43,7 @@ class Reservation extends Component {
                 },
                 {
                     text: 'OK', 
-<<<<<<< HEAD
                     onPress: () => {this.resetForm()}
-=======
-                    onPress: () => {
-                        this.presentLocalNotification(this.state.date);
-                        this.resetForm();
-                    }
->>>>>>> 56ca58a397ac50a00963808e11933d8a3ca5ee3d
                 }
             ],
             { cancelable: false }
