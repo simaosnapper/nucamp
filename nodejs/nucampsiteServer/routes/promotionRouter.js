@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const Promotion = require('../models/promotion');
+const authenticate = require('../authenticate');
 
 const promotionsRouter = express.Router();
 
@@ -16,7 +17,7 @@ promotionsRouter.route('/')
         })
         .catch(err => next(err));
 })
-.post((req, res, next) => {
+.post(authenticate.verifyUser, authenticate.verifyAdmin, (req, res, next) => {
     Promotion.create(req.body)
         .then(promotion => {
             console.log('Promotion Created', promotion);
@@ -26,11 +27,11 @@ promotionsRouter.route('/')
         })
         .catch(err => next(err));
 })
-.put((_, res) => {
+.put(authenticate.verifyUser, (_, res) => {
     res.statusCode = 403;
     res.end('PUT operation not supported on /promotions');
 })
-.delete((req, res, next) => {
+.delete(authenticate.verifyUser, authenticate.verifyAdmin, (req, res, next) => {
     Promotion.deleteMany()
         .then(response => {
             res.statusCode = 200;
@@ -41,7 +42,7 @@ promotionsRouter.route('/')
 });
 
 promotionsRouter.route('/:promotionId')
-.get((req, res, next) => {
+.get(authenticate.verifyUser, (req, res, next) => {
     Promotion.findById(req.params.promotionId)
         .then(promotion => {
             res.statusCode = 200;
@@ -50,10 +51,10 @@ promotionsRouter.route('/:promotionId')
         })
         .catch(err => next(err));
 })
-.post((_, res) => {
+.post(authenticate.verifyUser, authenticate.verifyAdmin, (_, res) => {
     res.end(`Post not supported`);
 })
-.put((req, res, next) => {
+.put(authenticate.verifyUser, (req, res, next) => {
     Promotion.findByIdAndUpdate(req.params.promotionId, { $set: req.body }, { new: true })
         .then(promotion => {
             res.statusCode = 200;
@@ -62,7 +63,7 @@ promotionsRouter.route('/:promotionId')
         })
         .catch(err => next(err));
 })
-.delete((req, res, next) => {
+.delete(authenticate.verifyUser, authenticate.verifyAdmin, (req, res, next) => {
     Promotion.findByIdAndDelete(req.params.promotionId)
     .then(response => {
         res.statusCode = 200;
